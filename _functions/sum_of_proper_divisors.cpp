@@ -14,7 +14,7 @@ int sum_of_proper_divisors(int n, bool debug) {
 	long int sum = 1; // 1 is a divisor of all positive integers <= n, for n >= 2
 
 	if (debug)
-		cout << "Proper divisors: 1 ";
+		cout << "Proper divisors: 1";
 
 	for (int i = 2; i < n; i++) {
 		if (!(((float) n / i) - n / i > 0)) {
