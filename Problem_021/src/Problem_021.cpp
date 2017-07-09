@@ -4,9 +4,12 @@ using namespace std;
 
 // Returns -1 if n <= 1, else returns the sum of the
 // proper divisors of n
-int d_of_n(int n) {
+// set debug = true for helpful comments when debugging.
+int d_of_n(int n, bool debug) {
 	// for debugging
-	cout << "Finding d_of_n for n = " << n << endl;
+	if (debug)
+		cout << "Finding d_of_n for n = " << n << endl;
+
 	if (n <= 1) {
 		cout << "n must be greater than 1!\n=======\n" << endl;
 		return -1;
@@ -14,19 +17,22 @@ int d_of_n(int n) {
 
 	long int sum = 1; // 1 is a divisor of all positive integers <= n, for n >= 2
 
-	cout << "Proper divisors: 1, ";
+	if (debug)
+		cout << "Proper divisors: 1 ";
 
 	for (int i = 2; i < n; i++) {
 		if (!(((float) n / i) - n / i > 0)) {
-			cout << i << ", ";
+			if (debug)
+				cout << ", " << i;
 			sum += i;
 		}
 	}
+	if (debug) {
+		cout << endl;
+		cout << "d(" << n << ") = " << sum << endl;
+		cout << "=======" << endl;
+	}
 
-	cout << endl;
-
-	cout << "d(" << n << ") = " << sum << endl;
-	cout << "=======" << endl;
 	return sum;
 }
 
