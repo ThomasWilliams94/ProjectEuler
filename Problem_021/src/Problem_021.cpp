@@ -39,14 +39,16 @@ int d_of_n(int n, bool debug) {
 // Returns true if a is an amicable number, false otherwise.
 // set debug = true for helpful comments when debugging.
 bool is_amicable(int a, bool debug) {
-	int d_of_a = d_of_n(a, 0);
-	int d_of_b = d_of_n(d_of_a, 0);
-	if(debug) {
+	int d_of_a = d_of_n(a, debug);
+	int d_of_b = d_of_n(d_of_a, debug);
+	if (debug) {
 		cout << "########" << endl;
 		cout << "d(a) with a=" << a << " is " << d_of_a << endl;
 		cout << "d(b) with b=" << d_of_a << " is " << d_of_b << endl;
-		cout << "a not equal to b? : " << (a != d_of_a ? "true" : "false") << endl;
-		cout << "a = d(b) ==> " << a << " = " << d_of_b << " ? : " << (a == d_of_b ? "true" : "false") << endl;
+		cout << "a not equal to b? : " << (a != d_of_a ? "true" : "false")
+				<< endl;
+		cout << "a = d(b) ==> " << a << " = " << d_of_b << " ? : "
+				<< (a == d_of_b ? "true" : "false") << endl;
 		cout << "########" << endl;
 	}
 	if ((a != d_of_a) && a == d_of_b) {
@@ -59,18 +61,31 @@ bool is_amicable(int a, bool debug) {
 int main() {
 	cout << "Project Euler | Problem 21\n" << endl;
 
-	d_of_n(0);
-	d_of_n(1);
-	d_of_n(2);
-	d_of_n(6);
-	d_of_n(220);
+	//*****************//
+	//try __N__ for a small number that you can work out yourself manually.
+//	int n = 220; // prime numbers, of course, only have d(n) = 1 which is why the n must be greater than 1! message keeps popping up.
+//	d_of_n(n, 1);
+//	d_of_n(d_of_n(n, 0), 1);
+//	cout << (is_amicable(n, 1) ? "true" : "false") << endl;
 
-	cout << "Testing 1." << endl;
-	d_of_n(d_of_n(220));
+	const int __N__ = 8000;
+	long long int sum = 0; // sum of amicable numbers under 10000
+	int count = 0;
+	string nums = ""; // output the amicable numbers here.
+	for (int i = 2; i < __N__; i++) {
+		cout << "\nLooping for i = " <<  i << endl;
+		if (is_amicable(i, 1)) {
+			cout << "AMICABLE" << endl;
+			count++;
+			int d_i = d_of_n(i, 1);
+			sum += d_i;
 
-	cout << "Testing 2. Is amicable?" << endl;
-	cout << (is_amicable(220) ? "true" : "false") << endl;
-	cout << (is_amicable(284) ? "true" : "false") << endl;
+		}
+	}
+	cout << nums << endl;
+	cout << count << endl;
+	cout << "The sum of amicable numbers under " << __N__ << " is: " << sum
+			<< endl;
 
 	return 0;
 }
