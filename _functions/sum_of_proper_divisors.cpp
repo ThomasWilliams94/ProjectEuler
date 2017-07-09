@@ -1,7 +1,7 @@
 // Returns -1 if n <= 1, else returns the sum of the
 // proper divisors of n
 // set debug = true for helpful comments when debugging.
-int sum_of_proper_divisors(int n, bool debug) {
+int sum_of_proper_divisors(int n, bool debug = false) {
 	// for debugging
 	if (debug)
 		cout << "Finding d_of_n for n = " << n << endl;
