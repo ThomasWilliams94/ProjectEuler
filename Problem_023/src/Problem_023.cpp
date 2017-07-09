@@ -44,9 +44,28 @@ bool is_perfect(int n) {
 	}
 }
 
+bool is_deficient(int n) {
+	if( sum_of_proper_divisors(n) < n) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool is_abundant(int n) {
+	if( sum_of_proper_divisors(n) > n) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 int main() {
 	cout << "Project Euler | Problem 23\n" << endl;
 
 	cout << (is_perfect(28) ? "true" : "false") << endl;
+	cout << (is_deficient(28) ? "true" : "false") << endl;
+	cout << (is_abundant(28) ? "true" : "false") << endl;
 	return 0;
 }
